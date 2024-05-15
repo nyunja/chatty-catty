@@ -1,4 +1,4 @@
-## README: Therapy Cat Chatbot
+# Therapy Cat Chatbot
 
 This program is a text-based chatbot that simulates a conversation with a therapy cat named Jill. It utilizes the Generative AI Go library ([https://ai.google/discover/generativeai/](https://ai.google/discover/generativeai/)) to interact with a large language model (LLM) called Gemini-Pro.
 
