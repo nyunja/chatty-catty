@@ -3,6 +3,7 @@ package main
 import (
 	"chatty/lib"
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -12,6 +13,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Therapy Cat Chatbot is starting... ���‍��️���‍��️")
 	godotenv.Load(".env")
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, option.WithAPIKey(os.Getenv("API_KEY")))
