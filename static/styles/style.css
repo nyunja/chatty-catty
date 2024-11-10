@@ -115,3 +115,23 @@ i:hover {
     padding: 12px 4%;
     background: var(--chat-color);
 }
+
+.message-input-form {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    border: 2px solid #544F7E;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.message-input-form input {
+    flex-grow: 1;
+}
+
+.message-input-form input::placeholder {
+    color: #9386a2;
+}
