@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -10,8 +11,9 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	tmpl, err := template.ParseFiles("templates/index.html")
+	tmpl, err := template.ParseFiles("../../templates/index.html")
 	if err != nil {
+		fmt.Println("index.html ont found")
 		http.NotFound(w, r)
 		return
 	}
