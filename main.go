@@ -15,8 +15,11 @@ import (
 )
 
 func main() {
-	 http.HandleFunc("/", h.HomeHandler)
-	 http.ListenAndServe(":8000", nil)
+	staticDir := "./static/"
+	staticURL := "/static/"
+	http.Handle(staticURL, h.CustomStaticServer(staticDir))
+	http.HandleFunc("/", h.HomeHandler)
+	http.ListenAndServe(":8000", nil)
 	fmt.Println("Therapy Cat Chatbot is starting... ���‍��️���‍��️")
 	godotenv.Load(".env")
 	ctx := context.Background()
