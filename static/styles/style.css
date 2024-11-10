@@ -18,3 +18,25 @@ body {
     background: #f9f9f9;
     padding: 0 5%;
 }
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button,
+input {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+i {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+i:hover {
+    filter: brightness(2);
+}
+
