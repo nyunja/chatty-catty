@@ -13,7 +13,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl, err := template.ParseFiles("../../templates/index.html")
 	if err != nil {
-		fmt.Println("index.html ont found")
+		fmt.Println("index.html not found")
 		http.NotFound(w, r)
 		return
 	}
