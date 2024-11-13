@@ -19,6 +19,8 @@ var (
 	EndCommand string = "end"
 )
 
+var ErrNoAPIKey = fmt.Errorf("API_KEY environment variable not set")
+
 func LoadConfig() (*Config, error) {
 	err := godotenv.Load(".env")
 	if err!= nil {
