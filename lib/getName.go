@@ -1,7 +1,24 @@
 package lib
 
-import "os"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
+func validateName(name string) (string, error) {
+	name = strings.TrimSpace(name)
+	if name == "" {
+		return "", fmt.Errorf("name cannot be empty")
+	}
+	if len(name) > 100 {
+		return "", fmt.Errorf("name cannot be longer than 100 characters")
+	}
+	if strings.ContainsAny(name, "!@#$%^&*()_+=-{}[]|:;<>,.?/~`") {
+		return "", fmt.Errorf("name contains invalid characters")
+	}
+	return name, nil
+}
 func getName() (string, string, string) {
 	name := make([]byte, 100)
 	// sep := checkOps()
