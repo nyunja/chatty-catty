@@ -7,10 +7,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type Config struct {
-	APIKey string
-}
-
 var (
 	API_KEY string
 	ModelName string = "gemini-pro"
@@ -21,15 +17,15 @@ var (
 
 var ErrNoAPIKey = fmt.Errorf("API_KEY environment variable not set")
 
-func LoadConfig() (*Config, error) {
+func LoadConfig()  error {
 	err := godotenv.Load(".env")
 	if err!= nil {
-        return nil, fmt.Errorf("error loading .env file: %v", err)
+        return fmt.Errorf("error loading .env file: %v", err)
     }
-	apiKey := os.Getenv("API_KEY")
-	if apiKey == "" {
-		return nil, fmt.Errorf("API_KEY environment variable not set")
+	API_KEY = os.Getenv("API_KEY")
+	if API_KEY == "" {
+		return fmt.Errorf("API_KEY environment variable not set")
 	}
 
-	return &Config{APIKey: apiKey}, nil
+	return nil
 }
