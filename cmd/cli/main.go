@@ -1,6 +1,7 @@
 package main
 
 import (
+	"chatty/config"
 	"chatty/lib"
 	"context"
 	"fmt"
@@ -8,15 +9,18 @@ import (
 	"os"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/joho/godotenv"
 	"google.golang.org/api/option"
 )
 
 func main() {
-	fmt.Println("Therapy Cat Chatbot is starting... ���‍��️���‍��️")
-	godotenv.Load(".env")
+	fmt.Println("Therapy Cat Chatbot is starting... 🐱‍💻🐱‍💻")
+	cfg, err := config.LoadConfig()
+	if err!= nil {
+        log.Fatalf("Error: %v", err)
+        return
+    }
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, option.WithAPIKey(os.Getenv("API_KEY")))
+	client, err := genai.NewClient(ctx, option.WithAPIKey(os.Getenv(cfg.APIKey)))
 	if err != nil {
 		log.Fatalln("Error: unable to initiate client")
 		return
