@@ -20,12 +20,27 @@ func validateName(name string) (string, error) {
 	return name, nil
 }
 func getName() (string, string, string) {
-	name := make([]byte, 100)
+	var name string
+	var err error
+	for {
+		printJill()
+		os.Stdout.WriteString("Hi, I am Jill, your therapy cat. What is your name?\n")
+		
+		// Read user input and trim whitespace and newline characters
+		input := make([]byte, 100)
+		n, _ := os.Stdin.Read(input)
+		inputName := string(name[:n-1])
+
+		// Check if name is valid
+		name, err = validateName(inputName)
+		if err == nil {
+			break
+		}
+		// If name is not valid, print error message and ask again
+		fmt.Printf("Oops! %s. Please try again.\n\n", err)
+	}
 	// sep := checkOps()
-	printJill()
-	os.Stdout.WriteString("Hi, I am Jill, your therapy cat. What is your name?\n")
-	n, _ := os.Stdin.Read(name)
-	name2 := Cap(string(name[:n-1]))
+	name2 := Cap(name)
 	os.Stdout.WriteString("\r\n")
 	persona := `Pretend you are a therapist cat who can talk called Jill. 
 	Respond to user input like a therapy cat who can talk. 
