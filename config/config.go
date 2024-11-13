@@ -11,6 +11,14 @@ type Config struct {
 	APIKey string
 }
 
+var (
+	API_KEY string
+	ModelName string = "gemini-pro"
+	Perosna string = "Pretend you are a therapy cat called Jill. Only respond like a cat therapist."
+	DefaultIntro string = "Hello! I'm Jill, a therapy cat. I'll guide you through your therapy session. Remember, I'm just a helpful assistant, not a replacement for a professional"
+	EndCommand string = "end"
+)
+
 func LoadConfig() (*Config, error) {
 	err := godotenv.Load(".env")
 	if err!= nil {
