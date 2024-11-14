@@ -1,6 +1,7 @@
 package core
 
 import (
+	cfg "chatty/config"
 	"context"
 	"fmt"
 	"log"
@@ -10,24 +11,13 @@ import (
 )
 
 func PrintChat(ctx context.Context, client *genai.Client) {
-	model := client.GenerativeModel("gemini-pro")
+	model := client.GenerativeModel(cfg.ModelName)
 	cs := model.StartChat()
 	persona, intro, name := getName()
-	cs.History = []*genai.Content{
-		{
-			Parts: []genai.Part{
-				genai.Text(persona),
-			},
-			Role: "user",
-		},
-		{
-			Parts: []genai.Part{
-				genai.Text(intro),
-			},
-			Role: "model",
-		},
-	}
-	fmt.Println("Jill: ")
+	InitializeChat(cs, persona, intro)
+
+	// fmt.Println("Jill: ")
+	printJill()
 	os.Stdout.WriteString(intro + "\n")
 	for {
 		input := make([]byte, 1024)
@@ -49,5 +39,22 @@ func PrintChat(ctx context.Context, client *genai.Client) {
 		}
 		fmt.Println("Jill: ")
 		fmt.Println(resp.Candidates[0].Content.Parts[0])
+	}
+}
+
+func InitializeChat(cs *genai.ChatSession, persona, intro string) {
+	cs.History = []*genai.Content{
+		{
+			Parts: []genai.Part{
+				genai.Text(persona),
+			},
+			Role: "user",
+		},
+		{
+			Parts: []genai.Part{
+				genai.Text(intro),
+			},
+			Role: "model",
+		},
 	}
 }
