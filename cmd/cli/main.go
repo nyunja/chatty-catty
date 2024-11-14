@@ -2,7 +2,7 @@ package main
 
 import (
 	"chatty/config"
-	"chatty/lib"
+	"chatty/core"
 	"context"
 	"fmt"
 	"log"
@@ -16,10 +16,10 @@ func main() {
 		return
 	}
 	ctx := context.Background()
-	client, err := lib.NewChatClient(ctx)
+	client, err := core.NewChatClient(ctx)
 	if err != nil {
 		log.Fatalln("Error: unable to initiate client")
 		return
 	}
-	lib.PrintChat(ctx, client)
+	core.PrintChat(ctx, client)
 }
