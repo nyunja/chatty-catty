@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event handler for form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const messageText = input.ariaValueMax.trim();
+        const messageText = input.value.trim();
         if (!messageText) return; // skip empty messages
 
         // Append users message to the chat area
