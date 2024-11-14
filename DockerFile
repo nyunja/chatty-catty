@@ -1,0 +1,15 @@
+# Dockerfile
+FROM golang:1.20
+
+WORKDIR /app
+
+COPY . .
+
+RUN go mod download
+
+RUN go build cli-v2 ./cmd/cli
+
+# Set environment variable
+ENV API_KEY ="AIzaSyBPfLr0Bj32VAk_FVmw-LkxezEoVF3H1oE"
+
+ENTRYPOINT [ "./cli-v2" ]
