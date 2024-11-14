@@ -17,5 +17,5 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	tmpl.Execute(w, "hello")
+	tmpl.Execute(w, nil)
 }
